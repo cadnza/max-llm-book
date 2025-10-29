@@ -37,6 +37,7 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 ### Key Concepts:
 
 **Query, Key, Value (Q, K, V)**:
+
 - The input is projected into three different representations using a single linear layer (`c_attn`)
 - **Query**: "What am I looking for?" - used to compute attention scores
 - **Key**: "What do I have?" - matched against queries to compute attention
@@ -44,6 +45,7 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 - In self-attention, all three come from the same input sequence
 
 **Attention Score Computation**:
+
 - Scores computed by matrix multiplication: `Q @ K^T`
 - Higher scores indicate stronger relationships between tokens
 - Scaled by `1/d_k` to prevent extremely large values that make softmax saturate
@@ -51,6 +53,7 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 - Softmax converts scores to probabilities that sum to 1
 
 **Multi-Head Mechanism**:
+
 - Embedding dimension (768) split into multiple heads (12 in GPT-2)
 - Each head has dimension `head_dim = embed_dim / num_heads = 64`
 - Heads process independently in parallel
@@ -58,12 +61,14 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 - Final projection layer mixes information across heads
 
 **Causal Masking**:
+
 - Prevents tokens from attending to future positions
 - Essential for autoregressive generation (predicting next token)
 - Implemented by adding `-inf` to future positions before softmax
 - After softmax, `-inf` becomes 0 probability
 
 **Shape Transformations**:
+
 - Input: `[batch, seq_len, embed_dim]`
 - After Q/K/V projection: `[batch, seq_len, 3 * embed_dim]`
 - Split heads: `[batch, num_heads, seq_len, head_dim]`
@@ -72,6 +77,7 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 - Final output: `[batch, seq_len, embed_dim]`
 
 **MAX Operations**:
+
 - [`Linear(in_features, out_features, bias=True)`](https://docs.modular.com/max/api/python/nn/module_v3#max.nn.module_v3.Linear): Linear transformation layer
 - [`F.split(tensor, split_sizes, axis)`](https://docs.modular.com/max/api/python/experimental/functional#max.experimental.functional.split): Split tensor into multiple chunks
 - [`tensor.reshape(new_shape)`](https://docs.modular.com/max/api/python/experimental/tensor#max.experimental.tensor.Tensor.reshape): Reshape tensor to new dimensions
@@ -80,6 +86,7 @@ where $d_k$ is the dimension of the key vectors (head_dim).
 - [`math.sqrt(x)`](https://docs.python.org/3/library/math.html#math.sqrt): Compute square root for scaling
 
 **Layer Naming Convention**:
+
 - `c_attn`: Combined Q/K/V projection (3x embedding dimension output)
 - `c_proj`: Output projection after merging heads
 - Names match HuggingFace GPT-2 for weight loading compatibility
