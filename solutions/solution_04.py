@@ -1,3 +1,10 @@
+"""
+Solution for Step 04: Feed-forward Network (MLP)
+
+This module implements the feed-forward network (MLP) used in each
+transformer block with GELU activation.
+"""
+
 from max.experimental import functional as F
 from max.experimental.tensor import Tensor
 from max.nn.module_v3 import Linear, Module

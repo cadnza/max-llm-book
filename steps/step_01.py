@@ -1,4 +1,15 @@
-"""GPT-2 model configuration."""
+"""
+Step 01: Model Configuration
+
+Implement the GPT-2 configuration dataclass that stores model hyperparameters.
+
+Tasks:
+1. Import dataclass from the dataclasses module
+2. Add the @dataclass decorator to the GPT2Config class
+3. Fill in the configuration values from HuggingFace GPT-2 model
+
+Run: pixi run s01
+"""
 
 # 1. Import dataclass from the dataclasses module\
 

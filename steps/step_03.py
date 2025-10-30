@@ -1,3 +1,16 @@
+"""
+Step 03: Layer Normalization
+
+Implement layer normalization that normalizes activations for training stability.
+
+Tasks:
+1. Import functional module (as F) and Tensor from max.experimental
+2. Initialize learnable weight (gamma) and bias (beta) parameters
+3. Apply layer normalization using F.layer_norm in the forward pass
+
+Run: pixi run s03
+"""
+
 # 1: Import the required modules from MAX
 # TODO: Import functional module from max.experimental with the alias F
 # https://docs.modular.com/max/api/python/experimental/functional

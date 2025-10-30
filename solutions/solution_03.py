@@ -1,3 +1,10 @@
+"""
+Solution for Step 03: Layer Normalization
+
+This module implements layer normalization that normalizes activations
+across the embedding dimension for training stability.
+"""
+
 from max.experimental import functional as F
 from max.experimental.tensor import Tensor
 from max.graph import DimLike

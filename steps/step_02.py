@@ -1,3 +1,18 @@
+"""
+Step 02: Causal Masking
+
+Implement causal attention masking that prevents tokens from attending to future positions.
+
+Tasks:
+1. Import functional module (as F) and Tensor from max.experimental
+2. Add @F.functional decorator to the causal_mask function
+3. Create a constant tensor filled with negative infinity
+4. Broadcast the mask to the correct shape (sequence_length, n)
+5. Apply band_part to create the lower triangular causal structure
+
+Run: pixi run s02
+"""
+
 # 1: Import the required modules from MAX
 from max.driver import Device
 from max.dtype import DType

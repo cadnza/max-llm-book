@@ -1,3 +1,10 @@
+"""
+Solution for Step 02: Causal Masking
+
+This module implements causal attention masking that prevents tokens from
+attending to future positions in autoregressive generation.
+"""
+
 from max.driver import Device
 from max.dtype import DType
 from max.experimental import functional as F

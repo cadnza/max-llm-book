@@ -1,3 +1,19 @@
+"""
+Step 04: Feed-forward Network (MLP)
+
+Implement the MLP used in each transformer block with GELU activation.
+
+Tasks:
+1. Import functional (as F), Tensor, Linear, and Module from MAX
+2. Create c_fc linear layer (embedding to intermediate dimension)
+3. Create c_proj linear layer (intermediate back to embedding dimension)
+4. Apply c_fc transformation in forward pass
+5. Apply GELU activation function
+6. Apply c_proj transformation and return result
+
+Run: pixi run s04
+"""
+
 # 1: Import the required modules from MAX
 # TODO: Import functional module from max.experimental with the alias F
 # https://docs.modular.com/max/api/python/experimental/functional
