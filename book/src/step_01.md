@@ -51,8 +51,6 @@ Once you have the values, replace each `None` in the `GPT2Config` class properti
 
 Run `pixi run s01` to verify your implementation matches the expected configuration.
 
-
-
 <details>
 <summary>Show solution</summary>
 

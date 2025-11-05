@@ -14,11 +14,11 @@ At 768 × 50,257 = 38.6M parameters, the LM head is the single largest component
 
 ## Understanding the projection
 
-The language model head performs a simple linear projection using MAX's [`Linear`](https://docs.modular.com/max/api/python/nn/module_v3#max.nn.module_v3.Linear) layer. It maps each 768-dimensional hidden state to 50,257 scores - one per vocabulary token.
+The language model head performs a simple linear projection using MAX's [`Linear`](https://docs.modular.com/max/api/python/nn/module_v3#max.nn.module_v3.Linear) layer. It maps each 768-dimensional hidden state to 50,257 scores, one per vocabulary token.
 
 The layer uses `bias=False`, meaning it only has weights and no bias vector. This saves 50,257 parameters (about 0.4% of model size). The bias provides little benefit because the layer normalization before the LM head already centers the activations. Adding a constant bias to all logits wouldn't change the relative probabilities after softmax.
 
-The output is called "logits" - raw scores before applying softmax. Logits can be any real number. During text generation (Step 12), you'll convert logits to probabilities with softmax. Working with logits directly enables techniques like temperature scaling and top-k sampling.
+The output is called "logits," which are raw scores before applying softmax. Logits can be any real number. During text generation (Step 12), you'll convert logits to probabilities with softmax. Working with logits directly enables techniques like temperature scaling and top-k sampling.
 
 ## Understanding the complete model
 
@@ -45,7 +45,7 @@ You'll use the following MAX operations to complete this task:
 
 ## Implementing the language model
 
-You'll create the `GPT2LMHeadModel` class that wraps the transformer with a language modeling head. The implementation is straightforward - just two components and a simple forward pass.
+You'll create the `GPT2LMHeadModel` class that wraps the transformer with a language modeling head. The implementation is straightforward, with just two components and a simple forward pass.
 
 First, import the required modules. You'll need `Linear` and `Module` from MAX, plus the previously implemented `GPT2Config` and `GPT2Model`.
 
@@ -53,7 +53,7 @@ In the `__init__` method, create two components:
 - Transformer: `GPT2Model(config)` stored as `self.transformer`
 - LM head: `Linear(config.n_embd, config.vocab_size, bias=False)` stored as `self.lm_head`
 
-Note the `bias=False` parameter - this creates a linear layer without bias terms.
+Note the `bias=False` parameter, which creates a linear layer without bias terms.
 
 In the `forward` method, implement a simple two-step process:
 1. Get hidden states from the transformer: `hidden_states = self.transformer(input_ids)`
@@ -71,8 +71,6 @@ That's it. The model takes token IDs and returns logits. In the next step, you'l
 ### Validation
 
 Run `pixi run s11` to verify your implementation.
-
-
 
 <details>
 <summary>Show solution</summary>

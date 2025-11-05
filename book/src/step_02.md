@@ -67,8 +67,6 @@ You'll create the causal mask in several steps:
 
 Run `pixi run s02` to verify your implementation.
 
-
-
 <details>
 <summary>Show solution</summary>
 

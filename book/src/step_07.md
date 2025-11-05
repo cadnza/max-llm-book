@@ -10,7 +10,7 @@ In this step, you'll implement the `GPT2MultiHeadAttention` class that runs 12 a
 
 GPT-2 uses 12 heads with 768-dimensional embeddings, giving each head 768 ÷ 12 = 64 dimensions. The Q, K, V tensors are reshaped to split the embedding dimension across heads, attention is computed for all heads in parallel, then the outputs are concatenated back together. This happens in a single efficient operation using tensor reshaping and broadcasting.
 
-Multiple heads let the model learn complementary attention strategies. Different heads can specialize in different relationships - one might attend to adjacent tokens, another to syntactic patterns, another to semantic similarity. This increases the model's capacity without dramatically increasing computation.
+Multiple heads let the model learn complementary attention strategies. Different heads can specialize in different relationships, such as one that might attend to adjacent tokens, another to syntactic patterns, and another to semantic similarity. This increases the model's capacity without dramatically increasing computation.
 
 ## Understanding the architecture
 
@@ -89,8 +89,6 @@ In the `forward` method, orchestrate the complete multi-head attention:
 ### Validation
 
 Run `pixi run s07` to verify your implementation.
-
-
 
 <details>
 <summary>Show solution</summary>

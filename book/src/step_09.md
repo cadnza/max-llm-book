@@ -35,7 +35,7 @@ Each sublayer follows the pre-norm pattern:
 3. Process through the sublayer (attention or MLP)
 4. Add the original `residual` back to the output
 
-This happens twice per block - once for attention, once for the MLP. The residual connections let gradients flow directly through the network, preventing vanishing gradients in deep models.
+This happens twice per block, once for attention and once for the MLP. The residual connections let gradients flow directly through the network, preventing vanishing gradients in deep models.
 
 Component names (`ln_1`, `attn`, `ln_2`, `mlp`) match Hugging Face's GPT-2 implementation. This matters for loading pretrained weights in later steps.
 
@@ -78,8 +78,6 @@ Finally, return `hidden_states`.
 ### Validation
 
 Run `pixi run s09` to verify your implementation.
-
-
 
 <details>
 <summary>Show solution</summary>

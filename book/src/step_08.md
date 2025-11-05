@@ -8,11 +8,11 @@
 
 In this step, you'll combine residual connections and layer normalization into a reusable pattern for transformer blocks. Residual connections add the input directly to the output using `output = input + layer(input)`, creating shortcuts that let gradients flow through deep networks. You'll implement this alongside the layer normalization from Step 03.
 
-GPT-2 uses pre-norm architecture where layer norm is applied before each sublayer (attention or MLP). The pattern is `x = x + sublayer(layer_norm(x))` - normalize first, process, then add the original input back. This is more stable than post-norm alternatives for deep networks.
+GPT-2 uses pre-norm architecture where layer norm is applied before each sublayer (attention or MLP). The pattern is `x = x + sublayer(layer_norm(x))`: normalize first, process, then add the original input back. This is more stable than post-norm alternatives for deep networks.
 
 Residual connections solve the vanishing gradient problem. During backpropagation, gradients flow through the identity path (`x = x + ...`) without being multiplied by layer weights. This allows training networks with 12+ layers. Without residuals, gradients would diminish exponentially as they propagate through many layers.
 
-Layer normalization works identically during training and inference because it normalizes each example independently. No batch statistics, no running averages - just consistent normalization that keeps activation distributions stable throughout training.
+Layer normalization works identically during training and inference because it normalizes each example independently. No batch statistics, no running averages, just consistent normalization that keeps activation distributions stable throughout training.
 
 ## Understanding the pattern
 
@@ -24,7 +24,7 @@ The pre-norm residual pattern combines three operations in sequence:
 
 **Residual addition**: Add the original input back to the sublayer output using simple element-wise addition: `x + sublayer_output`. Both tensors must have identical shapes `[batch, seq_length, embed_dim]`.
 
-The complete pattern is `x = x + sublayer(layer_norm(x))`. This differs from post-norm `x = layer_norm(x + sublayer(x))` - pre-norm is more stable because normalization happens before potentially unstable sublayer operations.
+The complete pattern is `x = x + sublayer(layer_norm(x))`. This differs from post-norm `x = layer_norm(x + sublayer(x))`, as pre-norm is more stable because normalization happens before potentially unstable sublayer operations.
 
 <div class="note">
 <div class="title">MAX operations</div>
@@ -77,8 +77,6 @@ Implement `apply_residual_connection(input_tensor, sublayer_output)` that return
 ### Validation
 
 Run `pixi run s08` to verify your implementation.
-
-
 
 <details>
 <summary>Show solution</summary>

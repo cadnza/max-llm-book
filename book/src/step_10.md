@@ -30,7 +30,7 @@ The forward method processes token IDs through the model:
 
 First, create position indices using [`Tensor.arange`](https://docs.modular.com/max/api/python/experimental/tensor#max.experimental.tensor.Tensor.arange). Generate positions [0, 1, 2, ..., seq_length-1] matching the input's dtype and device. This ensures compatibility when adding to embeddings.
 
-Next, look up embeddings. Get token embeddings with `self.wte(input_ids)` and position embeddings with `self.wpe(position_indices)`. Add them together element-wise - both are shape `[batch, seq_length, 768]`.
+Next, look up embeddings. Get token embeddings with `self.wte(input_ids)` and position embeddings with `self.wpe(position_indices)`. Add them together element-wise, as both are shape `[batch, seq_length, 768]`.
 
 Then, pass through the transformer blocks with `self.h(x)`. Sequential applies all 12 blocks in order, each refining the representation.
 
@@ -86,8 +86,6 @@ The position indices must match the input's dtype and device to ensure the tenso
 ### Validation
 
 Run `pixi run s10` to verify your implementation.
-
-
 
 <details>
 <summary>Show solution</summary>

@@ -55,8 +55,6 @@ You'll implement the position embeddings in several steps:
 
 Run `pixi run s06` to verify your implementation.
 
-
-
 <details>
 <summary>Show solution</summary>
 

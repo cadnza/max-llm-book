@@ -16,7 +16,7 @@ You'll implement two generation strategies: greedy decoding (always pick the hig
 
 The generation loop is simple: run the model, extract the next token prediction, append it to the sequence, repeat. Each iteration requires a full forward pass through all 12 transformer blocks.
 
-The model outputs logits with shape `[batch, seq_length, vocab_size]`. Since you only care about predicting the next token, extract the last position: `logits[0, -1, :]`. This gives you a vector of 50,257 scores - one per vocabulary token.
+The model outputs logits with shape `[batch, seq_length, vocab_size]`. Since you only care about predicting the next token, extract the last position: `logits[0, -1, :]`. This gives you a vector of 50,257 scores, one per vocabulary token.
 
 These scores are logits (unnormalized), not probabilities. To convert them to probabilities, apply softmax. Then you can either pick the highest-probability token (greedy) or sample from the distribution (random).
 
@@ -24,17 +24,17 @@ These scores are logits (unnormalized), not probabilities. To convert them to pr
 
 Temperature scaling adjusts how random the generation is using the formula `scaled_logits = logits / temperature`.
 
-With temperature 1.0, you use the original distribution. With temperature 0.7, you sharpen the distribution - high-probability tokens become even more likely, making generation more focused and deterministic. With temperature 1.2, you flatten the distribution - lower-probability tokens get more chances, making generation more diverse and creative.
+With temperature 1.0, you use the original distribution. With temperature 0.7, you sharpen the distribution, and high-probability tokens become even more likely, making generation more focused and deterministic. With temperature 1.2, you flatten the distribution, and lower-probability tokens get more chances, making generation more diverse and creative.
 
 Temperature is applied before softmax. Dividing by a value less than 1 makes large logits even larger (sharpening), while dividing by a value greater than 1 reduces the differences between logits (flattening).
 
 ## Understanding sampling vs greedy
 
-Greedy decoding always picks the highest-probability token using [`F.argmax`](https://docs.modular.com/max/api/python/experimental/functional#max.experimental.functional.argmax). It's fast, deterministic, and simple - but often produces repetitive text because the model keeps choosing the safest option.
+Greedy decoding always picks the highest-probability token using [`F.argmax`](https://docs.modular.com/max/api/python/experimental/functional#max.experimental.functional.argmax). It's fast, deterministic, and simple, but often produces repetitive text because the model keeps choosing the safest option.
 
 Sampling randomly selects tokens according to their probabilities. Convert logits to probabilities with `F.softmax`, transfer to CPU, convert to NumPy with `np.from_dlpack`, then sample with `np.random.choice`. You use NumPy because MAX doesn't have built-in sampling yet.
 
-Most practical generation uses sampling with temperature control. This balances creativity with coherence - the model can explore different possibilities while still favoring high-quality continuations.
+Most practical generation uses sampling with temperature control. This balances creativity with coherence, as the model can explore different possibilities while still favoring high-quality continuations.
 
 <div class="note">
 <div class="title">MAX operations</div>
@@ -92,8 +92,6 @@ The reshape is necessary because `concat` requires matching dimensions, and the 
 
 Run `pixi run s12` to verify your implementation.
 
-
-
 <details>
 <summary>Show solution</summary>
 
@@ -105,9 +103,11 @@ Run `pixi run s12` to verify your implementation.
 
 ## What you've built
 
-You've completed all 12 steps and built a complete GPT-2 model from scratch using MAX. You now have a working implementation of:
+You've completed all 12 steps and built a complete GPT-2 model from scratch
+using MAX. You now have a working implementation of:
 
 **Core components**:
+
 - Model configuration and architecture definition
 - Causal masking for autoregressive generation
 - Layer normalization for training stability

@@ -49,8 +49,6 @@ You'll implement the `Embedding` class in several steps:
 
 Run `pixi run s05` to verify your implementation.
 
-
-
 <details>
 <summary>Show solution</summary>
 

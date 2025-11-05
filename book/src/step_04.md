@@ -18,7 +18,7 @@ The MLP has three steps applied in sequence:
 
 **Expansion layer (`c_fc`)**: Projects from 768 to 3,072 dimensions using a linear layer. This expansion gives the network more capacity to process information.
 
-**GELU activation**: Applies Gaussian Error Linear Unit, a smooth non-linear function. GPT-2 uses `approximate="tanh"` for the tanh-based approximation instead of the exact computation. This approximation was faster when GPT-2 was implemented - while exact GELU is fast enough now, we use the approximation to match the original weights.
+**GELU activation**: Applies Gaussian Error Linear Unit, a smooth non-linear function. GPT-2 uses `approximate="tanh"` for the tanh-based approximation instead of the exact computation. This approximation was faster when GPT-2 was implemented, but while exact GELU is fast enough now, we use the approximation to match the original weights.
 
 **Projection layer (`c_proj`)**: Projects back from 3,072 to 768 dimensions using another linear layer. This returns to the embedding dimension so outputs can be added to residual connections.
 

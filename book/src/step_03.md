@@ -65,8 +65,6 @@ In the `forward` method, apply layer normalization with `F.layer_norm(x, gamma=s
 
 Run `pixi run s03` to verify your implementation.
 
-
-
 <details>
 <summary>Show solution</summary>
 
