@@ -18,8 +18,8 @@ Run: pixi run s10
 # Hint: You'll need Tensor from max.experimental.tensor
 # Hint: You'll need Embedding, Module, Sequential from max.nn.module_v3
 # Hint: Import GPT2Config from solutions.solution_01
-# Hint: Import LayerNorm from solutions.solution_10
-# Hint: Import GPT2Block from solutions.solution_11
+# Hint: Import LayerNorm from solutions.solution_08
+# Hint: Import GPT2Block from solutions.solution_09
 
 
 class GPT2Model(Module):
@@ -35,20 +35,20 @@ class GPT2Model(Module):
 
         # TODO: Create token embeddings
         # Hint: Use Embedding(config.vocab_size, dim=config.n_embd)
-        self.wte = None  # Line 34-35
+        self.wte = None
 
         # TODO: Create position embeddings
         # Hint: Use Embedding(config.n_positions, dim=config.n_embd)
-        self.wpe = None  # Line 38-39
+        self.wpe = None
 
         # TODO: Stack transformer blocks
         # Hint: Use Sequential(*(GPT2Block(config) for _ in range(config.n_layer)))
         # This creates config.n_layer blocks (12 for GPT-2 base)
-        self.h = None  # Line 42-44
+        self.h = None
 
         # TODO: Create final layer normalization
         # Hint: Use LayerNorm(config.n_embd, eps=config.layer_norm_epsilon)
-        self.ln_f = None  # Line 47-48
+        self.ln_f = None
 
     def __call__(self, input_ids):
         """Forward pass through the transformer.
@@ -61,28 +61,28 @@ class GPT2Model(Module):
         """
         # TODO: Get batch size and sequence length
         # Hint: batch_size, seq_length = input_ids.shape
-        pass  # Line 61-62
+        pass
 
         # TODO: Get token embeddings
         # Hint: tok_embeds = self.wte(input_ids)
-        pass  # Line 65-66
+        pass
 
         # TODO: Get position embeddings
         # Hint: Create position indices with Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device)
         # Hint: pos_embeds = self.wpe(position_indices)
-        pass  # Line 69-72
+        pass
 
         # TODO: Combine embeddings
         # Hint: x = tok_embeds + pos_embeds
-        pass  # Line 75-76
+        pass
 
         # TODO: Apply transformer blocks
         # Hint: x = self.h(x)
-        pass  # Line 79-80
+        pass
 
         # TODO: Apply final layer norm
         # Hint: x = self.ln_f(x)
-        pass  # Line 83-84
+        pass
 
         # TODO: Return the output
-        return None  # Line 87
+        return None
