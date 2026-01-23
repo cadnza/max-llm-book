@@ -9,9 +9,19 @@ are subject to change. Share feedback on the
 
 </div>
 
-Transformer models power today's most impactful AI applications, from language models like ChatGPT to code generation tools like GitHub Copilot. Maybe you've been asked to adapt one of these models for your team, or you want to understand what's actually happening when you call an inference API. Either way, building a transformer from scratch is one of the best ways to truly understand how they work.
+Transformer models power today's most impactful AI applications, from language
+models like ChatGPT to code generation tools like GitHub Copilot. Maybe you've
+been asked to adapt one of these models for your team, or you want to understand
+what's actually happening when you call an inference API. Either way, building
+a transformer from scratch is one of the best ways to truly understand how they
+work.
 
-This guide walks you through implementing GPT-2 using Modular's MAX framework [experimental API](https://docs.modular.com/max/api/python/experimental/). You'll build each component yourself: embeddings, attention mechanisms, and feed-forward layers. You'll see how they fit together into a complete language model by completing the sequential coding challenges in the tutorial [GitHub repository](https://github.com/modular/max-llm-book).
+This guide walks you through implementing GPT-2 using Modular's MAX framework
+[experimental API](https://docs.modular.com/max/api/python/experimental/). You'll
+build each component yourself: embeddings, attention mechanisms, and feed-forward
+layers. You'll see how they fit together into a complete language model by
+completing the sequential coding challenges in the tutorial
+[GitHub repository](https://github.com/modular/max-llm-book).
 
 <div class="note">
 
@@ -26,13 +36,18 @@ will be pinned to a major release version.
 
 ## Why GPT-2?
 
-It's the architectural foundation for modern language models. LLaMA, Mistral, GPT-4; they're all built on the same core components you'll implement here:
+It's the architectural foundation for modern language models. LLaMA, Mistral,
+GPT-4; they're all built on the same core components you'll implement here:
 
 - multi-head attention
 - feed-forward layers
 - layer normalization
 
-Modern variants add refinements like grouped-query attention or mixture of experts, but the fundamentals remain the same. GPT-2 is complex enough to teach real transformer architecture but simple enough to implement completely and understand deeply. When you grasp how its pieces fit together, you understand how to build any transformer-based model.
+Modern variants add refinements like grouped-query attention or mixture of
+experts, but the fundamentals remain the same. GPT-2 is complex enough to teach
+real transformer architecture but simple enough to implement completely and
+understand deeply. When you grasp how its pieces fit together, you understand
+how to build any transformer-based model.
 
 > **Learning by building**: This tutorial follows a format popularized by Andrej
 > Karpathy's educational work and Sebastian Raschka's hands-on approach. Rather
@@ -42,9 +57,9 @@ Modern variants add refinements like grouped-query attention or mixture of exper
 ## Why MAX?
 
 Traditional ML development often feels like stitching together tools that
-weren't designed to work together. Maybe you write your model in PyTorch, optimize in
-CUDA, convert to ONNX for deployment, then use separate serving tools. Each
-handoff introduces complexity.
+weren't designed to work together. Maybe you write your model in PyTorch,
+optimize in CUDA, convert to ONNX for deployment, then use separate serving
+tools. Each handoff introduces complexity.
 
 MAX Framework takes a different approach: everything happens in one unified
 system. You write code to define your model, load weights, and run inference,
@@ -103,21 +118,30 @@ with MAX's Python API. These are skills you can immediately apply to your own pr
 
 ## Try it first
 
-Before diving into the implementation, you can experience what you'll build by running the complete reference model:
+Before diving into the implementation, you can experience what you'll build by
+running the complete reference model:
 
 ```bash
 pixi run main
 ```
 
-This runs the complete GPT-2 implementation from [`main.py`](https://github.com/modular/max-llm-book/blob/main/main.py), loading pretrained weights and starting an interactive prompt where you can enter text and see the model generate completions. It's the same model you'll build step-by-step through the tutorial.
+This runs the complete GPT-2 implementation from
+[`main.py`](https://github.com/modular/max-llm-book/blob/main/main.py), loading
+pretrained weights and starting an interactive prompt where you can enter text
+and see the model generate completions. It's the same model you'll build
+step-by-step through the tutorial.
 
-When you've completed every step of the tutorial, you can run your own implementation the exact same way:
+When you've completed every step of the tutorial, you can run your own
+implementation the exact same way:
 
 ```bash
 pixi run gpt2
 ```
 
-This runs your completed `steps/step_11.py`, demonstrating that your implementation works identically to the reference. Both commands load the same pretrained weights, compile the model, and provide an interactive generation experience.
+This runs your completed `steps/step_11.py`, demonstrating that your
+implementation works identically to the reference. Both commands load the same
+pretrained weights, compile the model, and provide an interactive generation
+experience.
 
 ## Get started
 
