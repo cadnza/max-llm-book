@@ -1,10 +1,10 @@
 [book]
-authors = ["Modular <hello@modular.com>"]
-language = "en"
-multilingual = false
-src = "src"
 title = "Build an LLM from scratch with MAX"
-version = "1.0.0"
+authors = ["Modular <hello@modular.com>"]
+description = "This guide walks you through implementing GPT-2 using Modular’s MAX framework."
+src = "src"
+language = "en"
+text-direction = "ltr"
 
 [output.html]
 additional-css = [
