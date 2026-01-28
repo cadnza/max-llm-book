@@ -24,7 +24,7 @@ Run: pixi run s02
 # https://docs.modular.com/max/api/python/nn/functional
 
 # TODO: Import Tensor from max.tensor
-# https://docs.modular.com/max/api/python/experimental/tensor.Tensor
+# https://docs.modular.com/max/api/python/tensor.Tensor
 
 # TODO: Import Linear and Module from max.nn
 # https://docs.modular.com/max/api/python/nn/module_v3

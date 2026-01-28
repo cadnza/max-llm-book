@@ -59,9 +59,9 @@ You'll use the following MAX operations to complete this task:
 
 **Tensor initialization**:
 
-- [`Tensor.ones()`](https://docs.modular.com/max/api/python/experimental/tensor#max.tensor.Tensor.ones):
+- [`Tensor.ones()`](https://docs.modular.com/max/api/python/tensor#max.tensor.Tensor.ones):
   Creates tensor filled with 1.0 values
-- [`Tensor.zeros()`](https://docs.modular.com/max/api/python/experimental/tensor#max.tensor.Tensor.zeros):
+- [`Tensor.zeros()`](https://docs.modular.com/max/api/python/tensor#max.tensor.Tensor.zeros):
   Creates tensor filled with 0.0 values
 
 **Layer normalization**:

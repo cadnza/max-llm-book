@@ -87,7 +87,7 @@ You'll use the following MAX operations to complete this task:
 
 - [`F.concat([seq, new_token], axis=1)`](https://docs.modular.com/max/api/python/nn/functional#max.nn.functional.concat):
   Appends token to sequence
-- [`Tensor.constant(value, dtype, device)`](https://docs.modular.com/max/api/python/experimental/tensor#max.tensor.Tensor.constant):
+- [`Tensor.constant(value, dtype, device)`](https://docs.modular.com/max/api/python/tensor#max.tensor.Tensor.constant):
   Creates scalar tensors
 
 **NumPy interop**:
