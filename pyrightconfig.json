@@ -11,5 +11,6 @@
     ],
     "typeCheckingMode": "strict",
     "venv": "default",
-    "venvPath": ".pixi/envs"
+    "venvPath": ".pixi/envs",
+    "reportMissingTypeStubs": "none"
 }
