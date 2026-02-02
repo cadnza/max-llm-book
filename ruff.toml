@@ -1,2 +1,2 @@
 select = ["ALL"]
-ignore = ["D400", "D415", "E501"]
+ignore = ["D400", "D415", "E501", "INP001"]
