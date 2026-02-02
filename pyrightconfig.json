@@ -1,3 +1,15 @@
 {
-    "typeCheckingMode": "strict"
+    "exclude": [
+        ".pixi",
+        "checks",
+        "scripts",
+        "solutions",
+        "tests"
+    ],
+    "ignore": [
+        "main.py"
+    ],
+    "typeCheckingMode": "strict",
+    "venv": "default",
+    "venvPath": ".pixi/envs"
 }
