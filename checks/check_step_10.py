@@ -57,9 +57,7 @@ def check_step_10() -> bool:
                     f"✅ generate_text has optional parameter: {param} (default={param_obj.default})"
                 )
             else:
-                errors.append(
-                    f"Parameter '{param}' should have a default value"
-                )
+                errors.append(f"Parameter '{param}' should have a default value")
         else:
             errors.append(f"generate_text missing optional parameter: {param}")
 

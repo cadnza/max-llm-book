@@ -61,20 +61,14 @@ def check_step_09() -> bool:
         tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
         device = CPU()
 
-        token_ids = encode_text(
-            "Hello, world!", tokenizer, device, max_length=128
-        )
+        token_ids = encode_text("Hello, world!", tokenizer, device, max_length=128)
 
         from max.tensor import Tensor
 
         if not isinstance(token_ids, Tensor):
-            errors.append(
-                f"encode_text should return a Tensor, got {type(token_ids)}"
-            )
+            errors.append(f"encode_text should return a Tensor, got {type(token_ids)}")
         else:
-            print(
-                f"✅ encode_text returns a Tensor with shape: {token_ids.shape}"
-            )
+            print(f"✅ encode_text returns a Tensor with shape: {token_ids.shape}")
 
         # Check shape is 2D [batch, seq_len]
         if len(token_ids.shape) != 2:
@@ -108,9 +102,7 @@ def check_step_09() -> bool:
         decoded = decode_tokens(test_tokens, tokenizer)
 
         if not isinstance(decoded, str):
-            errors.append(
-                f"decode_tokens should return a string, got {type(decoded)}"
-            )
+            errors.append(f"decode_tokens should return a string, got {type(decoded)}")
         else:
             print(f"✅ decode_tokens returns a string: '{decoded}'")
 

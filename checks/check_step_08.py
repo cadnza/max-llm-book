@@ -58,9 +58,7 @@ def check_step_08() -> bool:
         from max.nn import Linear
 
         if not isinstance(model.lm_head, Linear):
-            errors.append(
-                f"lm_head should be Linear, got {type(model.lm_head)}"
-            )
+            errors.append(f"lm_head should be Linear, got {type(model.lm_head)}")
 
     # Check 4: Verify forward method
     if not hasattr(model, "forward"):

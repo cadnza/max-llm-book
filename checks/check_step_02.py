@@ -62,9 +62,7 @@ def check_step_02() -> bool:
         sig = inspect.signature(mlp.forward)
         params = list(sig.parameters.keys())
         if "hidden_states" not in params:
-            errors.append(
-                "forward method should accept 'hidden_states' parameter"
-            )
+            errors.append("forward method should accept 'hidden_states' parameter")
         else:
             print("✅ GPT2MLP has forward method with correct signature")
 

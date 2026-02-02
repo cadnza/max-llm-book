@@ -61,9 +61,7 @@ def check_step_03() -> bool:
         from max.tensor import Tensor
 
         if not isinstance(mask, Tensor):
-            errors.append(
-                f"causal_mask should return a Tensor, got {type(mask)}"
-            )
+            errors.append(f"causal_mask should return a Tensor, got {type(mask)}")
         else:
             print("✅ causal_mask returns a Tensor")
 
@@ -71,9 +69,7 @@ def check_step_03() -> bool:
         expected_shape = (5, 5)
         actual_shape = tuple(int(dim) for dim in mask.shape)
         if actual_shape != expected_shape:
-            errors.append(
-                f"Expected mask shape {expected_shape}, got {actual_shape}"
-            )
+            errors.append(f"Expected mask shape {expected_shape}, got {actual_shape}")
         else:
             print(f"✅ Mask has correct shape: {actual_shape}")
 

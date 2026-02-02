@@ -119,9 +119,7 @@ class GPT2MultiHeadAttention(Module):
         """Split the last dimension into (num_heads, head_size)"""
         new_shape = list(tensor.shape[:-1]) + [num_heads, attn_head_size]
         tensor = tensor.reshape(new_shape)
-        return tensor.transpose(
-            -3, -2
-        )  # (batch, head, seq_length, head_features)
+        return tensor.transpose(-3, -2)  # (batch, head, seq_length, head_features)
 
     def _merge_heads(
         self, tensor: Tensor | TensorValue, num_heads: int, attn_head_size: int
@@ -146,9 +144,7 @@ class GPT2MultiHeadAttention(Module):
         value = self._split_heads(value, self.num_heads, self.head_dim)
 
         attn_output = self._attn(query, key, value)
-        attn_output = self._merge_heads(
-            attn_output, self.num_heads, self.head_dim
-        )
+        attn_output = self._merge_heads(attn_output, self.num_heads, self.head_dim)
         attn_output = self.c_proj(cast(Tensor, attn_output))
 
         return cast(Tensor, attn_output)
@@ -165,9 +161,7 @@ class LayerNorm(Module):
         self.bias = Tensor.zeros([dim])
 
     def forward(self, x: Tensor) -> Tensor:
-        return F.layer_norm(
-            x, gamma=self.weight, beta=self.bias, epsilon=self.eps
-        )
+        return F.layer_norm(x, gamma=self.weight, beta=self.bias, epsilon=self.eps)
 
 
 # ANCHOR_END: layer_normalization
@@ -223,9 +217,7 @@ class MaxGPT2Model(Module):
         _, seq_length = input_ids.shape
         tok_embeds = self.wte(input_ids)
         pos_embeds = self.wpe(
-            Tensor.arange(
-                seq_length, dtype=input_ids.dtype, device=input_ids.device
-            )
+            Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device)
         )
         x = tok_embeds + pos_embeds
         x = self.h(x)
@@ -359,10 +351,7 @@ def main() -> None:
     max_model.to(device)
     for name, child in max_model.descendants:
         if isinstance(child, Linear):
-            if any(
-                layer_name in name
-                for layer_name in ["c_attn", "c_proj", "c_fc"]
-            ):
+            if any(layer_name in name for layer_name in ["c_attn", "c_proj", "c_fc"]):
                 print(f"Transposing {name}: {child.weight.shape}")
                 # The upstream model has conv1d layers instead of linear, which have their weights
                 # stored transposed compared to linear

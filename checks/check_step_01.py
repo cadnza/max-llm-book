@@ -33,9 +33,7 @@ def check_step_01() -> bool:
 
     # Check 1: Is it a dataclass?
     if not is_dataclass(GPT2Config):
-        errors.append(
-            "GPT2Config must be a dataclass (use @dataclass decorator)"
-        )
+        errors.append("GPT2Config must be a dataclass (use @dataclass decorator)")
     else:
         print("✅ GPT2Config is a dataclass")
 

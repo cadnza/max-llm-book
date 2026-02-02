@@ -61,9 +61,7 @@ class MaxGPT2Model(Module):
 
         # Get position embeddings
         pos_embeds = self.wpe(
-            Tensor.arange(
-                seq_length, dtype=input_ids.dtype, device=input_ids.device
-            )
+            Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device)
         )
 
         # Combine embeddings

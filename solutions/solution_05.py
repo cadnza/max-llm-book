@@ -39,6 +39,4 @@ class LayerNorm(Module):
         Returns:
             Normalized tensor.
         """
-        return F.layer_norm(
-            x, gamma=self.weight, beta=self.bias, epsilon=self.eps
-        )
+        return F.layer_norm(x, gamma=self.weight, beta=self.bias, epsilon=self.eps)

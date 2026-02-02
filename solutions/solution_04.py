@@ -139,9 +139,7 @@ class GPT2MultiHeadAttention(Module):
         attn_output = self._attn(query, key, value)
 
         # Merge heads back
-        attn_output = self._merge_heads(
-            attn_output, self.num_heads, self.head_dim
-        )
+        attn_output = self._merge_heads(attn_output, self.num_heads, self.head_dim)
 
         # Output projection
         attn_output = self.c_proj(attn_output)

@@ -76,9 +76,7 @@ class TestCausalMask:
         """Test that causal mask has correct shape."""
         seq_len = 5
         num_tokens = 0
-        mask = causal_mask(
-            seq_len, num_tokens, dtype=DType.float32, device=CPU()
-        )
+        mask = causal_mask(seq_len, num_tokens, dtype=DType.float32, device=CPU())
         # Compare as lists of ints since MAX returns Dim objects
         assert [int(d) for d in mask.shape] == [seq_len, seq_len]
 
@@ -86,9 +84,7 @@ class TestCausalMask:
         """Test that causal mask has correct values (upper triangle is -inf)."""
         seq_len = 4
         num_tokens = 0
-        mask = causal_mask(
-            seq_len, num_tokens, dtype=DType.float32, device=CPU()
-        )
+        mask = causal_mask(seq_len, num_tokens, dtype=DType.float32, device=CPU())
 
         # Convert to numpy for inspection
         mask_np = np.from_dlpack(mask)
@@ -123,9 +119,7 @@ class TestGPT2MultiHeadAttention:
         attn = GPT2MultiHeadAttention(config)
 
         batch_size, seq_len = 2, 10
-        tensor = Tensor.ones(
-            [batch_size, seq_len, config.n_embd], dtype=DType.float32
-        )
+        tensor = Tensor.ones([batch_size, seq_len, config.n_embd], dtype=DType.float32)
         split = attn._split_heads(tensor, config.n_head, attn.head_dim)
 
         # Should be [batch, n_head, seq_len, head_dim]
@@ -285,9 +279,7 @@ class TestTokenizationFunctions:
         mock_tokenizer = Mock()
         mock_tokenizer.encode.return_value = [15496, 995]  # "Hello world"
 
-        result = encode_text(
-            "Hello world", mock_tokenizer, CPU(), max_length=128
-        )
+        result = encode_text("Hello world", mock_tokenizer, CPU(), max_length=128)
 
         # Check that tokenizer.encode was called correctly
         mock_tokenizer.encode.assert_called_once_with(
@@ -307,9 +299,7 @@ class TestTokenizationFunctions:
         mock_tokenizer.decode.return_value = "Hello world"
 
         # Create token tensor
-        token_ids = Tensor.constant(
-            [15496, 995], dtype=DType.int64, device=CPU()
-        )
+        token_ids = Tensor.constant([15496, 995], dtype=DType.int64, device=CPU())
         result = decode_tokens(token_ids, mock_tokenizer)
 
         # Check that tokenizer.decode was called
@@ -324,9 +314,7 @@ class TestTokenizationFunctions:
         mock_tokenizer.decode.return_value = "Hello world"
 
         # Create 2D token tensor (batch x seq)
-        token_ids = Tensor.constant(
-            [[15496, 995]], dtype=DType.int64, device=CPU()
-        )
+        token_ids = Tensor.constant([[15496, 995]], dtype=DType.int64, device=CPU())
         result = decode_tokens(token_ids, mock_tokenizer)
 
         # Should flatten and decode

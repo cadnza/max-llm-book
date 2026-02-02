@@ -43,9 +43,7 @@ def check_step_11() -> bool:
     sig = inspect.signature(run_model)
     # run_model should take no required arguments
     required_params = [
-        p
-        for p in sig.parameters.values()
-        if p.default == inspect.Parameter.empty
+        p for p in sig.parameters.values() if p.default == inspect.Parameter.empty
     ]
     if len(required_params) > 0:
         errors.append(

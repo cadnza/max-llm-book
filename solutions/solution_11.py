@@ -39,10 +39,7 @@ def run_model() -> None:
     max_model.to(device)
     for name, child in max_model.descendants:
         if isinstance(child, Linear):
-            if any(
-                layer_name in name
-                for layer_name in ["c_attn", "c_proj", "c_fc"]
-            ):
+            if any(layer_name in name for layer_name in ["c_attn", "c_proj", "c_fc"]):
                 print(f"Transposing {name}: {child.weight.shape}")
                 # The upstream model has conv1d layers instead of linear, which have their weights
                 # stored transposed compared to linear
