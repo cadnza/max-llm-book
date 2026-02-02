@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 09: Encode and Decode Tokens
+"""Check for Step 09: Encode and Decode Tokens
 
 Validates that encode_text and decode_tokens functions are correctly implemented.
 """
@@ -73,13 +72,13 @@ def check_step_09() -> bool:
         # Check shape is 2D [batch, seq_len]
         if len(token_ids.shape) != 2:
             errors.append(
-                f"encode_text should return 2D tensor [batch, seq_len], got shape {token_ids.shape}"
+                f"encode_text should return 2D tensor [batch, seq_len], got shape {token_ids.shape}",
             )
 
         # Check batch size is 1
         if token_ids.shape[0] != 1:
             errors.append(
-                f"encode_text should return batch_size=1, got {token_ids.shape[0]}"
+                f"encode_text should return batch_size=1, got {token_ids.shape[0]}",
             )
 
     except Exception as e:
@@ -97,7 +96,7 @@ def check_step_09() -> bool:
 
         # Create test tokens
         test_tokens = Tensor.constant(
-            [[15496, 11, 995, 0]], dtype=DType.int64, device=device
+            [[15496, 11, 995, 0]], dtype=DType.int64, device=device,
         )
         decoded = decode_tokens(test_tokens, tokenizer)
 

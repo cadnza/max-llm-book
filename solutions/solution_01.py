@@ -24,6 +24,7 @@ class GPT2Config:
         n_head: Number of attention heads.
         n_inner: Inner dimension of feed-forward network (defaults to 4 * n_embd if None).
         layer_norm_epsilon: Epsilon for layer normalization.
+
     """
 
     vocab_size: int = 50257

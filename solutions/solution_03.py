@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 03: Causal Masking
+"""Solution for Step 03: Causal Masking
 
 This module implements causal attention masking that prevents tokens from
 attending to future positions in autoregressive generation.
@@ -35,6 +34,7 @@ def causal_mask(
 
     Returns:
         A causal mask tensor.
+
     """
     n = Dim(sequence_length) + num_tokens
     mask = Tensor.constant(float("-inf"), dtype=dtype, device=device)

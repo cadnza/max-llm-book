@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 11: Load weights and run model
+"""Solution for Step 11: Load weights and run model
 
 
 """
@@ -31,7 +30,7 @@ def run_model() -> None:
     max_model = MaxGPT2LMHeadModel(config)
 
     print(
-        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim"
+        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim",
     )
 
     # Load state dict and transpose weights
@@ -52,7 +51,7 @@ def run_model() -> None:
     # Compile model
     print("\nCompiling model...")
     token_type = TensorType(
-        DType.int64, ("batch", "seqlen"), device=DeviceRef.from_device(device)
+        DType.int64, ("batch", "seqlen"), device=DeviceRef.from_device(device),
     )
     compiled_max_model = max_model.compile(token_type)
 

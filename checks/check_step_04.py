@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 04: Multi-head Attention
+"""Check for Step 04: Multi-head Attention
 
 Validates that GPT2MultiHeadAttention is correctly implemented.
 """
@@ -83,7 +82,7 @@ def check_step_04() -> bool:
 
         if output.shape != dummy_input.shape:
             errors.append(
-                f"Output shape mismatch: expected {dummy_input.shape}, got {output.shape}"
+                f"Output shape mismatch: expected {dummy_input.shape}, got {output.shape}",
             )
         else:
             print(f"✅ Forward pass successful with shape: {output.shape}")

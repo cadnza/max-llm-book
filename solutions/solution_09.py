@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 09: Encode and decode tokens
+"""Solution for Step 09: Encode and decode tokens
 
 This module provides utility functions to tokenize input text
 and decode token IDs back to text using a tokenizer.
@@ -18,7 +17,7 @@ from transformers import GPT2Tokenizer
 
 
 def encode_text(
-    text: str, tokenizer: GPT2Tokenizer, device: Device, max_length: int = 128
+    text: str, tokenizer: GPT2Tokenizer, device: Device, max_length: int = 128,
 ) -> Tensor:
     """Tokenize text and convert to tensor."""
     token_ids = tokenizer.encode(text, max_length=max_length, truncation=True)

@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 05: Layer Normalization
+"""Step 05: Layer Normalization
 
 Implement layer normalization that normalizes activations for training stability.
 
@@ -34,6 +33,7 @@ class LayerNorm(Module):
     Args:
         dim: Dimension to normalize over.
         eps: Epsilon for numerical stability.
+
     """
 
     def __init__(self, dim: DimLike, *, eps: float = 1e-5) -> None:
@@ -59,6 +59,7 @@ class LayerNorm(Module):
 
         Returns:
             Normalized tensor.
+
         """
         # 3: Apply layer normalization and return the result
         # TODO: Use F.layer_norm() with x, gamma=self.weight, beta=self.bias, epsilon=self.eps

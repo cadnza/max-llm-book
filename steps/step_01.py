@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 01: Model Configuration
+"""Step 01: Model Configuration
 
 Implement the GPT-2 configuration dataclass that stores model hyperparameters.
 
@@ -32,6 +31,7 @@ class GPT2Config:
         n_head: Number of attention heads.
         n_inner: Inner dimension of feed-forward network (defaults to 4 * n_embd if None).
         layer_norm_epsilon: Epsilon for layer normalization.
+
     """
 
     # 3a. Run `pixi run huggingface` to access the model parameters from the Hugging Face `transformers` library

@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 05: Layer Normalization
+"""Solution for Step 05: Layer Normalization
 
 This module implements layer normalization that normalizes activations
 across the embedding dimension for training stability.
@@ -22,6 +21,7 @@ class LayerNorm(Module):
     Args:
         dim: Dimension to normalize over.
         eps: Epsilon for numerical stability.
+
     """
 
     def __init__(self, dim: DimLike, *, eps: float = 1e-5) -> None:
@@ -38,5 +38,6 @@ class LayerNorm(Module):
 
         Returns:
             Normalized tensor.
+
         """
         return F.layer_norm(x, gamma=self.weight, beta=self.bias, epsilon=self.eps)

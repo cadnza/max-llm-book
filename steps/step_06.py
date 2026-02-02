@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 06: Transformer Block
+"""Step 06: Transformer Block
 
 Combine multi-head attention, MLP, layer normalization, and residual
 connections into a complete transformer block.
@@ -32,6 +31,7 @@ class GPT2Block(Module):
 
         Args:
             config: GPT2Config containing model hyperparameters
+
         """
         super().__init__()
 
@@ -66,20 +66,19 @@ class GPT2Block(Module):
 
         Returns:
             Output tensor, shape [batch, seq_length, n_embd]
+
         """
         # TODO: Attention block with residual connection
         # Hint: residual = hidden_states
         # Hint: hidden_states = self.ln_1(hidden_states)
         # Hint: attn_output = self.attn(hidden_states)
         # Hint: hidden_states = attn_output + residual
-        pass
 
         # TODO: MLP block with residual connection
         # Hint: residual = hidden_states
         # Hint: hidden_states = self.ln_2(hidden_states)
         # Hint: feed_forward_hidden_states = self.mlp(hidden_states)
         # Hint: hidden_states = residual + feed_forward_hidden_states
-        pass
 
         # TODO: Return the output
         return None

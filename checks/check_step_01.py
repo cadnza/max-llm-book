@@ -69,7 +69,7 @@ def check_step_01() -> bool:
             if actual_value != expected_value:
                 errors.append(
                     f"Field '{field_name}' has incorrect value: "
-                    f"expected {expected_value}, got {actual_value}"
+                    f"expected {expected_value}, got {actual_value}",
                 )
             else:
                 print(f"✅ {field_name} = {actual_value}")
@@ -91,7 +91,7 @@ def check_step_01() -> bool:
             if not isinstance(actual_value, expected_type):
                 warnings.append(
                     f"Field '{field_name}' should be {expected_type.__name__}, "
-                    f"got {type(actual_value).__name__}"
+                    f"got {type(actual_value).__name__}",
                 )
 
     # Print results

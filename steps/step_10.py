@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 10: Text Generation
+"""Step 10: Text Generation
 
 Implement autoregressive text generation with sampling and temperature control.
 
@@ -51,6 +50,7 @@ def generate_text(
 
     Returns:
         Generated text string
+
     """
     # TODO: Tokenize the prompt text
     # Hint: Use encode_text(prompt, tokenizer, device, max_length=100)
@@ -58,13 +58,12 @@ def generate_text(
 
     print(f"Starting generation from: '{prompt}'")
     print(
-        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}"
+        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}",
     )
     print("-" * 50)
 
     # TODO: Implement generation loop for max_new_tokens steps
     # Hint: for step in range(max_new_tokens):
-    pass
 
     # TODO: Get model predictions (logits) for current sequence
     # Hint: logits = model(generated_tokens)

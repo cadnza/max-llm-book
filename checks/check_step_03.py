@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 03: Causal Masking
+"""Check for Step 03: Causal Masking
 
 Validates that causal_mask function is correctly implemented.
 """

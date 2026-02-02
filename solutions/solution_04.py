@@ -27,6 +27,7 @@ class GPT2MultiHeadAttention(Module):
 
         Args:
             config: GPT2Config containing n_embd and n_head
+
         """
         super().__init__()
 
@@ -41,7 +42,7 @@ class GPT2MultiHeadAttention(Module):
         self.c_proj = Linear(self.embed_dim, self.embed_dim, bias=True)
 
     def _split_heads(
-        self, tensor: Tensor, num_heads: int, attn_head_size: int
+        self, tensor: Tensor, num_heads: int, attn_head_size: int,
     ) -> Tensor:
         """Split the last dimension into (num_heads, head_size).
 
@@ -55,6 +56,7 @@ class GPT2MultiHeadAttention(Module):
 
         Returns:
             Tensor with shape [batch, num_heads, seq_length, head_size]
+
         """
         # Add head dimension: [batch, seq_length, n_embd] -> [batch, seq_length, num_heads, head_size]
         new_shape = list(tensor.shape[:-1]) + [num_heads, attn_head_size]
@@ -63,7 +65,7 @@ class GPT2MultiHeadAttention(Module):
         return tensor.transpose(-3, -2)
 
     def _merge_heads(
-        self, tensor: Tensor, num_heads: int, attn_head_size: int
+        self, tensor: Tensor, num_heads: int, attn_head_size: int,
     ) -> Tensor:
         """Merge attention heads back to original shape.
 
@@ -77,6 +79,7 @@ class GPT2MultiHeadAttention(Module):
 
         Returns:
             Tensor with shape [batch, seq_length, n_embd]
+
         """
         # Move heads dimension back: [batch, num_heads, seq_length, head_size] -> [batch, seq_length, num_heads, head_size]
         tensor = tensor.transpose(-3, -2)
@@ -94,6 +97,7 @@ class GPT2MultiHeadAttention(Module):
 
         Returns:
             Attention output, shape [batch, num_heads, seq_length, head_size]
+
         """
         # Compute attention scores
         attn_weights = query @ key.transpose(-1, -2)
@@ -120,15 +124,16 @@ class GPT2MultiHeadAttention(Module):
 
         Returns:
             Attention output, shape [batch, seq_length, n_embd]
+
         """
         # Project to Q, K, V
         qkv = self.c_attn(hidden_states)
         split_result = F.split(
-            qkv, [self.split_size, self.split_size, self.split_size], axis=-1
+            qkv, [self.split_size, self.split_size, self.split_size], axis=-1,
         )
-        query = cast(Tensor, split_result[0])
-        key = cast(Tensor, split_result[1])
-        value = cast(Tensor, split_result[2])
+        query = cast("Tensor", split_result[0])
+        key = cast("Tensor", split_result[1])
+        value = cast("Tensor", split_result[2])
 
         # Split into multiple heads
         query = self._split_heads(query, self.num_heads, self.head_dim)

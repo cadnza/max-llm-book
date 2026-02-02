@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 11: Load Weights and Run Model
+"""Check for Step 11: Load Weights and Run Model
 
 Validates that run_model function is correctly implemented.
 """
@@ -47,7 +46,7 @@ def check_step_11() -> bool:
     ]
     if len(required_params) > 0:
         errors.append(
-            f"run_model should not have required parameters, found: {[p.name for p in required_params]}"
+            f"run_model should not have required parameters, found: {[p.name for p in required_params]}",
         )
     else:
         print("✅ run_model has correct signature (no required parameters)")
@@ -73,7 +72,7 @@ def check_step_11() -> bool:
                 print(f"✅ Function contains: {description}")
             else:
                 errors.append(
-                    f"Function missing: {description} ('{component}' not found in source)"
+                    f"Function missing: {description} ('{component}' not found in source)",
                 )
 
     except Exception as e:
@@ -90,7 +89,7 @@ def check_step_11() -> bool:
 
     print("🎉 All checks passed for Step 11!")
     print(
-        "Note: Full testing requires running the interactive model (use: pixi run gpt2)"
+        "Note: Full testing requires running the interactive model (use: pixi run gpt2)",
     )
     return True
 

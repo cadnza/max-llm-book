@@ -73,7 +73,7 @@ def check_step_08() -> bool:
 
         # Create dummy token IDs [batch=1, seq_len=10]
         dummy_input = Tensor.constant(
-            [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], dtype=DType.int64
+            [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]], dtype=DType.int64,
         )
         output = model(dummy_input)
 
@@ -81,7 +81,7 @@ def check_step_08() -> bool:
         actual_shape = tuple(int(dim) for dim in output.shape)
         if actual_shape != expected_shape:
             errors.append(
-                f"Output shape mismatch: expected {expected_shape}, got {actual_shape}"
+                f"Output shape mismatch: expected {expected_shape}, got {actual_shape}",
             )
         else:
             print(f"✅ Forward pass successful with shape: {actual_shape}")

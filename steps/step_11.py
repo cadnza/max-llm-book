@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 11: Load Weights and Run Model
+"""Step 11: Load Weights and Run Model
 
 Load pretrained GPT-2 weights from HuggingFace and run the complete model.
 
@@ -21,7 +20,6 @@ Run: pixi run s11
 
 def run_model() -> None:
     """Load GPT-2 model, compile it, and run interactive text generation."""
-
     # TODO: Load HuggingFace model
     # Hint: hf_model = GPT2LMHeadModel.from_pretrained("gpt2")
     # Hint: print(f"Loaded HuggingFace model:\n{hf_model}")
@@ -37,7 +35,7 @@ def run_model() -> None:
     max_model = None
 
     print(
-        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim"
+        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim",
     )
 
     # TODO: Load state dict and move to device

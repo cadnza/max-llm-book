@@ -6,6 +6,10 @@
 from unittest.mock import Mock, patch
 
 import numpy as np
+from max.driver import CPU
+from max.dtype import DType
+from max.tensor import Tensor
+
 from main import (
     GPT2MLP,
     GPT2Block,
@@ -18,9 +22,6 @@ from main import (
     decode_tokens,
     encode_text,
 )
-from max.driver import CPU
-from max.dtype import DType
-from max.tensor import Tensor
 
 
 class TestGPT2Config:
@@ -283,7 +284,7 @@ class TestTokenizationFunctions:
 
         # Check that tokenizer.encode was called correctly
         mock_tokenizer.encode.assert_called_once_with(
-            "Hello world", max_length=128, truncation=True
+            "Hello world", max_length=128, truncation=True,
         )
 
         # Check result shape and type

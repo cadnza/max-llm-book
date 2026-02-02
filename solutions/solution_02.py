@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 02: Feed-forward Network (MLP)
+"""Solution for Step 02: Feed-forward Network (MLP)
 
 This module implements the feed-forward network (MLP) used in each
 transformer block with GELU activation.
@@ -22,6 +21,7 @@ class GPT2MLP(Module):
     Args:
         intermediate_size: Size of the intermediate layer.
         config: GPT-2 configuration.
+
     """
 
     def __init__(self, intermediate_size: int, config: GPT2Config) -> None:
@@ -38,6 +38,7 @@ class GPT2MLP(Module):
 
         Returns:
             MLP output.
+
         """
         hidden_states = self.c_fc(hidden_states)
         hidden_states = F.gelu(hidden_states, approximate="tanh")

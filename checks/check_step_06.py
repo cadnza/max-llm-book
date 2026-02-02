@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 06: Transformer Block
+"""Check for Step 06: Transformer Block
 
 Validates that GPT2Block is correctly implemented.
 """
@@ -70,7 +69,7 @@ def check_step_06() -> bool:
 
         if output.shape != dummy_input.shape:
             errors.append(
-                f"Output shape mismatch: expected {dummy_input.shape}, got {output.shape}"
+                f"Output shape mismatch: expected {dummy_input.shape}, got {output.shape}",
             )
         else:
             print(f"✅ Forward pass successful with shape: {output.shape}")

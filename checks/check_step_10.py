@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 10: Text Generation
+"""Check for Step 10: Text Generation
 
 Validates that generate_text function is correctly implemented.
 """
@@ -54,7 +53,7 @@ def check_step_10() -> bool:
             param_obj = sig.parameters[param]
             if param_obj.default != inspect.Parameter.empty:
                 print(
-                    f"✅ generate_text has optional parameter: {param} (default={param_obj.default})"
+                    f"✅ generate_text has optional parameter: {param} (default={param_obj.default})",
                 )
             else:
                 errors.append(f"Parameter '{param}' should have a default value")

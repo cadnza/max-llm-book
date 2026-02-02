@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 07: Stacking Transformer Blocks
+"""Step 07: Stacking Transformer Blocks
 
 Stack multiple transformer blocks with embeddings to create
 the complete GPT-2 model architecture.
@@ -35,6 +34,7 @@ class MaxGPT2Model(Module):
 
         Args:
             config: GPT2Config containing model hyperparameters
+
         """
         super().__init__()
 
@@ -63,31 +63,26 @@ class MaxGPT2Model(Module):
 
         Returns:
             Hidden states, shape [batch, seq_length, n_embd]
+
         """
         # TODO: Get batch size and sequence length
         # Hint: batch_size, seq_length = input_ids.shape
-        pass
 
         # TODO: Get token embeddings
         # Hint: tok_embeds = self.wte(input_ids)
-        pass
 
         # TODO: Get position embeddings
         # Hint: Create position indices with Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device)
         # Hint: pos_embeds = self.wpe(position_indices)
-        pass
 
         # TODO: Combine embeddings
         # Hint: x = tok_embeds + pos_embeds
-        pass
 
         # TODO: Apply transformer blocks
         # Hint: x = self.h(x)
-        pass
 
         # TODO: Apply final layer norm
         # Hint: x = self.ln_f(x)
-        pass
 
         # TODO: Return the output
         return None

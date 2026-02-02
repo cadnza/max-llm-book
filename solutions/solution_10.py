@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 10: Text Generation
+"""Solution for Step 10: Text Generation
 
 This module implements autoregressive text generation using the GPT-2 model.
 """
@@ -33,7 +32,7 @@ def generate_text(
 
     print(f"Starting generation from: '{prompt}'")
     print(
-        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}"
+        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}",
     )
     print("-" * 50)
 
@@ -59,7 +58,7 @@ def generate_text(
             probs_np = probs_np.astype(np.float64)
             next_token_id = np.random.choice(len(probs_np), p=probs_np)
             next_token_tensor = Tensor.constant(
-                next_token_id, dtype=DType.int64, device=generated_tokens.device
+                next_token_id, dtype=DType.int64, device=generated_tokens.device,
             )
         else:
             next_token_tensor = F.argmax(next_token_logits)

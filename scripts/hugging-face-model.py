@@ -26,7 +26,7 @@ def get_gpt2_config() -> None:
         # n_inner - inner dimension of MLP (feed-forward network)
         f"n_inner: {torch_model.transformer.h[0].mlp.c_fc.nf}\n"
         # layer_norm_epsilon - epsilon for layer normalization
-        f"layer_norm_epsilon: {torch_model.transformer.ln_f.eps}\n"
+        f"layer_norm_epsilon: {torch_model.transformer.ln_f.eps}\n",
     )
     # print(torch_model)
 

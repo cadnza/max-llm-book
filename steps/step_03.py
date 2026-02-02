@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 03: Causal Masking
+"""Step 03: Causal Masking
 
 Implement causal attention masking that prevents tokens from attending to future positions.
 
@@ -50,6 +49,7 @@ def causal_mask(
 
     Returns:
         A causal mask tensor.
+
     """
     # Calculate total sequence length
     n = Dim(sequence_length) + num_tokens

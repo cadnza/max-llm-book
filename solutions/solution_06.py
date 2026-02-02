@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Solution for Step 06: Transformer Block
+"""Solution for Step 06: Transformer Block
 
 This module implements a complete GPT-2 transformer block, combining
 multi-head attention, MLP, layer normalization, and residual connections.
@@ -31,6 +30,7 @@ class GPT2Block(Module):
 
         Args:
             config: GPT2Config containing model hyperparameters
+
         """
         super().__init__()
 
@@ -59,6 +59,7 @@ class GPT2Block(Module):
 
         Returns:
             Output tensor, shape [batch, seq_length, n_embd]
+
         """
         # Attention block with residual connection
         residual = hidden_states

@@ -114,7 +114,7 @@ class GPT2MultiHeadAttention(Module):
         return attn_output
 
     def _split_heads(
-        self, tensor: Tensor | TensorValue, num_heads: int, attn_head_size: int
+        self, tensor: Tensor | TensorValue, num_heads: int, attn_head_size: int,
     ) -> Tensor | TensorValue:
         """Split the last dimension into (num_heads, head_size)"""
         new_shape = list(tensor.shape[:-1]) + [num_heads, attn_head_size]
@@ -122,7 +122,7 @@ class GPT2MultiHeadAttention(Module):
         return tensor.transpose(-3, -2)  # (batch, head, seq_length, head_features)
 
     def _merge_heads(
-        self, tensor: Tensor | TensorValue, num_heads: int, attn_head_size: int
+        self, tensor: Tensor | TensorValue, num_heads: int, attn_head_size: int,
     ) -> Tensor | TensorValue:
         """Merge attention heads back"""
         tensor = tensor.transpose(-3, -2)
@@ -135,9 +135,9 @@ class GPT2MultiHeadAttention(Module):
             [self.split_size, self.split_size, self.split_size],
             axis=2,
         )
-        query = cast(Tensor | TensorValue, split_result[0])
-        key = cast(Tensor | TensorValue, split_result[1])
-        value = cast(Tensor | TensorValue, split_result[2])
+        query = cast("Tensor | TensorValue", split_result[0])
+        key = cast("Tensor | TensorValue", split_result[1])
+        value = cast("Tensor | TensorValue", split_result[2])
 
         query = self._split_heads(query, self.num_heads, self.head_dim)
         key = self._split_heads(key, self.num_heads, self.head_dim)
@@ -145,9 +145,9 @@ class GPT2MultiHeadAttention(Module):
 
         attn_output = self._attn(query, key, value)
         attn_output = self._merge_heads(attn_output, self.num_heads, self.head_dim)
-        attn_output = self.c_proj(cast(Tensor, attn_output))
+        attn_output = self.c_proj(cast("Tensor", attn_output))
 
-        return cast(Tensor, attn_output)
+        return cast("Tensor", attn_output)
 
 
 # ANCHOR_END: multi_head_attention
@@ -217,7 +217,7 @@ class MaxGPT2Model(Module):
         _, seq_length = input_ids.shape
         tok_embeds = self.wte(input_ids)
         pos_embeds = self.wpe(
-            Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device)
+            Tensor.arange(seq_length, dtype=input_ids.dtype, device=input_ids.device),
         )
         x = tok_embeds + pos_embeds
         x = self.h(x)
@@ -248,7 +248,7 @@ class MaxGPT2LMHeadModel(Module):
 
 # ANCHOR: encode_and_decode
 def encode_text(
-    text: str, tokenizer: GPT2Tokenizer, device: Device, max_length: int = 128
+    text: str, tokenizer: GPT2Tokenizer, device: Device, max_length: int = 128,
 ) -> Tensor:
     """Tokenize text and convert to tensor."""
     token_ids = tokenizer.encode(text, max_length=max_length, truncation=True)
@@ -283,7 +283,7 @@ def generate_text(
 
     print(f"Starting generation from: '{prompt}'")
     print(
-        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}"
+        f"Settings: max_new_tokens={max_new_tokens}, temperature={temperature}, do_sample={do_sample}",
     )
     print("-" * 50)
 
@@ -309,7 +309,7 @@ def generate_text(
             probs_np = probs_np.astype(np.float64)
             next_token_id = np.random.choice(len(probs_np), p=probs_np)
             next_token_tensor = Tensor.constant(
-                next_token_id, dtype=DType.int64, device=generated_tokens.device
+                next_token_id, dtype=DType.int64, device=generated_tokens.device,
             )
         else:
             next_token_tensor = F.argmax(next_token_logits)
@@ -343,7 +343,7 @@ def main() -> None:
     max_model = MaxGPT2LMHeadModel(config)
 
     print(
-        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim"
+        f"Model has {config.n_layer} layers, {config.n_head} heads, {config.n_embd} embedding dim",
     )
 
     # Load state dict and transpose weights
@@ -364,7 +364,7 @@ def main() -> None:
     # Compile model
     print("\nCompiling model...")
     token_type = TensorType(
-        DType.int64, ("batch", "seqlen"), device=DeviceRef.from_device(device)
+        DType.int64, ("batch", "seqlen"), device=DeviceRef.from_device(device),
     )
     compiled_max_model = max_model.compile(token_type)
 

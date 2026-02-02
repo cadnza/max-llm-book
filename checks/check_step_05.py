@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 05: Layer Normalization
+"""Check for Step 05: Layer Normalization
 
 Validates that LayerNorm is correctly implemented.
 """
@@ -63,7 +62,7 @@ def check_step_05() -> bool:
             actual_shape = tuple(int(dim) for dim in ln.weight.shape)
             if actual_shape != expected_shape:
                 errors.append(
-                    f"weight shape should be {expected_shape}, got {actual_shape}"
+                    f"weight shape should be {expected_shape}, got {actual_shape}",
                 )
             else:
                 print(f"✅ weight has correct shape: {actual_shape}")
@@ -78,7 +77,7 @@ def check_step_05() -> bool:
             actual_shape = tuple(int(dim) for dim in ln.bias.shape)
             if actual_shape != expected_shape:
                 errors.append(
-                    f"bias shape should be {expected_shape}, got {actual_shape}"
+                    f"bias shape should be {expected_shape}, got {actual_shape}",
                 )
             else:
                 print(f"✅ bias has correct shape: {actual_shape}")
@@ -101,7 +100,7 @@ def check_step_05() -> bool:
         actual_shape = tuple(int(dim) for dim in output.shape)
         if actual_shape != expected_shape:
             errors.append(
-                f"Output shape mismatch: expected {expected_shape}, got {actual_shape}"
+                f"Output shape mismatch: expected {expected_shape}, got {actual_shape}",
             )
         else:
             print(f"✅ Forward pass successful with shape: {actual_shape}")

@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Step 08: Language Model Head
+"""Step 08: Language Model Head
 
 Add the final projection layer that converts hidden states to vocabulary logits.
 
@@ -31,6 +30,7 @@ class MaxGPT2LMHeadModel(Module):
 
         Args:
             config: GPT2Config containing model hyperparameters
+
         """
         super().__init__()
 
@@ -53,14 +53,13 @@ class MaxGPT2LMHeadModel(Module):
 
         Returns:
             Logits over vocabulary, shape [batch, seq_length, vocab_size]
+
         """
         # TODO: Get hidden states from transformer
         # Hint: hidden_states = self.transformer(input_ids)
-        pass
 
         # TODO: Project to vocabulary logits
         # Hint: logits = self.lm_head(hidden_states)
-        pass
 
         # TODO: Return logits
         return None

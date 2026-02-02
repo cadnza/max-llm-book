@@ -3,8 +3,7 @@
 # This file is Modular Inc proprietary.
 #
 # ===----------------------------------------------------------------------=== #
-"""
-Check for Step 02: Feed-forward Network (MLP)
+"""Check for Step 02: Feed-forward Network (MLP)
 
 Validates that GPT2MLP is correctly implemented with proper structure.
 """
@@ -79,11 +78,11 @@ def check_step_02() -> bool:
         if output.shape != dummy_input.shape:
             errors.append(
                 f"Output shape mismatch: expected {dummy_input.shape}, "
-                f"got {output.shape}"
+                f"got {output.shape}",
             )
         else:
             print(
-                f"✅ Forward pass successful with correct output shape: {output.shape}"
+                f"✅ Forward pass successful with correct output shape: {output.shape}",
             )
     except Exception as e:
         errors.append(f"Forward pass failed: {e}")
